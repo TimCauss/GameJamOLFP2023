@@ -5,6 +5,7 @@ import HeroAnimKeys from '../consts/HeroAnimKeys'
 
 import "../char/Hero";
 import Hero from '../char/Hero';
+import eventsCenter from '../utils/EventsCenter';
 
 
 export default class Game extends Phaser.Scene {
@@ -24,11 +25,12 @@ export default class Game extends Phaser.Scene {
         const height = this.scale.height;
 
 
+
         //On ajoute le backgrounden Tilesprite pour le repeat.
         this.background1 = this.add.tileSprite(0, 0, width, height, TextureKeys.Background1)
             .setOrigin(0, 0).setScrollFactor(0, 0);
 
-        this.hero = this.add.hero(width * 0.1, height - 52, HeroAnimKeys.HeroRun, undefined);
+        this.hero = this.add.hero(width * 0.1, height - 500, HeroAnimKeys.HeroRun, undefined);
         this.hero.scale = 0.5
     }
 
