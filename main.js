@@ -1,4 +1,5 @@
-import Phaser from "phaser";
+import Phaser from "./src/lib/phaser.js";
+import Game from "./src/scenes/Game.js";
 
 const config = {
   type: Phaser.AUTO,
