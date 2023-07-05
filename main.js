@@ -11,7 +11,7 @@ const config = {
       debug: true,
     },
   },
-  scene: [Preloader, StartMenu, Game, Interface, GameOver],
+  scene: [Game], //Preloader, StartMenu, Game, Interface, GameOver
   scale: {
     autocenter: Phaser.scale.CENTER_BOTH,
     mode: Phaser.Scale.FIT, // or FILL if you want to stretch the game
