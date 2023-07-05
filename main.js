@@ -19,3 +19,5 @@ const config = {
     height: 640,
   },
 };
+
+export default new Phaser.Game(config);
