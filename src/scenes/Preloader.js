@@ -1,3 +1,4 @@
+import { createHeroAnims } from "../anims/heroAnims.js";
 import Phaser from "../lib/phaser.js";
 
 export default class Preloader extends Phaser.Scene {
@@ -7,13 +8,19 @@ export default class Preloader extends Phaser.Scene {
 
   Preload() {
     //chargement des images de fond:
-    this.load.image("Background1", "/assets/image/level/background.png");
+    this.load.image('background', 'assets/level/background.png');
 
     //chargement des image/animations du héro:
-    this.load.atlas("hero", "/assets/image/character/hero.png");
+    this.load.atlas(
+      "hero-jump-run",
+      "/assets/image/character/hero-jumpandrun.png",
+      "/assets/image/character/hero-jumpandrun.json"
+    );
   }
 
-  create() {}
+  create() {
+    //createHeroAnims(this.anims);
 
-  update() {}
+    this.scene.start("game");
+  }
 }
