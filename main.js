@@ -1,24 +1,19 @@
-import Phaser from "./src/lib/phaser.js";
-import Game from "./src/scenes/Game.js";
+import Phaser from "./lib/phaser.js";
+import Game from "./scenes/Game.js";
 
-const config = {
+
+export default new Phaser.Game({
   type: Phaser.AUTO,
-  parent: "app",
-  pixelArt: true,
-  pysics: {
+  width: 480,
+  height: 640,
+  scene: [Game, GameOver],
+  physics: {
     default: "arcade",
-    acracade: {
-      gravity: 0,
-      debug: true,
+    arcade: {
+      gravity: {
+        y: 200,
+      },
+      debug: false,
     },
   },
-  scene: [Game], //Preloader, StartMenu, Game, Interface, GameOver
-  scale: {
-    autocenter: Phaser.scale.CENTER_BOTH,
-    mode: Phaser.Scale.FIT, // or FILL if you want to stretch the game
-    width: 960,
-    height: 640,
-  },
-};
-
-export default new Phaser.Game(config);
+});
