@@ -3,12 +3,15 @@ import SceneKeys from '../consts/SceneKeys'
 import TextureKeys from '../consts/TextureKeys'
 import HeroAnimKeys from '../consts/HeroAnimKeys'
 
+import "../char/Hero";
+import Hero from '../char/Hero';
+
 
 export default class Game extends Phaser.Scene {
 
-    private background1!: Phaser.GameObjects.TileSprite
+    private background1!: Phaser.GameObjects.TileSprite;
 
-    private hero!: Phaser.GameObjects.Sprite
+    private hero!: Hero;
 
     constructor() {
         super(SceneKeys.Game)
@@ -25,7 +28,7 @@ export default class Game extends Phaser.Scene {
         this.background1 = this.add.tileSprite(0, 0, width, height, TextureKeys.Background1)
             .setOrigin(0, 0).setScrollFactor(0, 0);
 
-        this.hero = this.add.sprite(width * 0.1, height-52, TextureKeys.TextureHero).play(HeroAnimKeys.HeroRun)
+        this.hero = this.add.hero(width * 0.1, height - 52, HeroAnimKeys.HeroRun, undefined);
         this.hero.scale = 0.5
     }
 

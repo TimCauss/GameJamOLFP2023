@@ -10,7 +10,7 @@ const config: Phaser.Types.Core.GameConfig = {
 	pixelArt: true,
 	roundPixels: true,
 	physics: {
-		default: "ninja",
+		default: "arcade",
 		arcade: {
 			gravity: { y: 0 },
 			debug: false,
