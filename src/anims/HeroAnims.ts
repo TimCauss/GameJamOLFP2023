@@ -18,7 +18,7 @@ const createHeroAnims = (anims: Phaser.Animations.AnimationManager) => {
             zeroPad: 3,
             suffix: ".png",
         }),
-        frameRate: 25,
+        frameRate: 40,
         repeat: -1,
     });
 };

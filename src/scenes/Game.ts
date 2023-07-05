@@ -5,7 +5,6 @@ import HeroAnimKeys from '../consts/HeroAnimKeys'
 
 import "../char/Hero";
 import Hero from '../char/Hero';
-import eventsCenter from '../utils/EventsCenter';
 
 
 export default class Game extends Phaser.Scene {
@@ -32,12 +31,17 @@ export default class Game extends Phaser.Scene {
 
         this.hero = this.add.hero(width * 0.1, height - 500, HeroAnimKeys.HeroRun, undefined);
         this.hero.scale = 0.5
+
+        //On ajoute la camera qui suit le héro, on décal son offset de 500px à gauche pour placer le héro à gauche du screen:
+        this.cameras.main.startFollow(this.hero, undefined, undefined, undefined, -500)
+        this.cameras.main.setBounds(0, 0, Number.MAX_SAFE_INTEGER, height)
     }
 
     update() {
 
         //mise à jour de la position du background:
         this.background1.setTilePosition(this.cameras.main.scrollX);
+        
     }
 
 }

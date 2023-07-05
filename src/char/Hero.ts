@@ -51,6 +51,9 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
         const sceneHeight = scene.scale.height //hauteur de la scene
         heroBody.world.setBounds(0, 0, Number.MAX_SAFE_INTEGER, sceneHeight - 30)
 
+        //On lance l'auto run en ajoutant une velocité X :
+        heroBody.setVelocityX(400)
+
     }
 
 }
