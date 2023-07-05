@@ -6,8 +6,10 @@ export default class Preloader extends Phaser.Scene {
     }
 
     Preload() {
-        this.load.image('Background1', "URL BACKGROUND1");
-    }
-    
+        //chargement des images de fond:
+        this.load.image('Background1', "/assets/image/level/background.png");
 
+        //chargement des image/animations du héro:
+        this.load.atlas('hero', "/assets/image/character/background.png");
+    }
 }
