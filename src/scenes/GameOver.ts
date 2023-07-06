@@ -19,7 +19,7 @@ export default class GameOver extends Phaser.Scene {
             this.scene.start(SceneKeys.Game)
         })
 
-        this.sound.stopAll('sound1');
+        this.sound.stopAll();
         this.sound.play('sound3');
     }
 

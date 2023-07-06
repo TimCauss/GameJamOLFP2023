@@ -45,7 +45,7 @@ export default class Preload extends Phaser.Scene {
         //Prelaod des musiques
         this.load.audio('sound1', 'public/assets/sfx/musique-de-fond.ogg');
         this.load.audio('sound2', 'public/assets/sfx/jump.ogg');
-        this.load.audio('sound3', 'public/assets/sfx/go.ogg');
+        this.load.audio('sound3', 'public/assets/sfx/game-over.ogg');
 
     }
 
