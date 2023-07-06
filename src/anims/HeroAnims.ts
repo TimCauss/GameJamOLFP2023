@@ -18,8 +18,19 @@ const createHeroAnims = (anims: Phaser.Animations.AnimationManager) => {
             zeroPad: 3,
             suffix: ".png",
         }),
-        frameRate: 40,
+        frameRate: 30,
         repeat: -1,
+    });    anims.create({
+        key: HeroAnimKeys.HeroJump,
+        //generate frames:
+        frames: anims.generateFrameNames(TextureKeys.TextureHero, {
+            start: 0,
+            end: 9,
+            prefix: "Jump__",
+            zeroPad: 3,
+            suffix: ".png",
+        }),
+        frameRate: 20,
     });
 };
 

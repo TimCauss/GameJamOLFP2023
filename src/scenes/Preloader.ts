@@ -10,8 +10,11 @@ export default class Preload extends Phaser.Scene {
 
     preload() {
 
-        //preload des image des backgrounds:
+        //preload des images des backgrounds:
         this.load.image(TextureKeys.Background1, "public/assets/level/background/bg_colored_forest.png")
+
+        //preload des images des elements de décours:
+        this.load.image(TextureKeys.Cloud1, 'public/assets/level/Elements/cloud1.png')
 
         //Preload des sprites et du spriteSheet:
         this.load.atlas(TextureKeys.TextureHero, "public/assets/char/hero/hero-sprite.png", "public/assets/char/hero/hero-sprite.json")

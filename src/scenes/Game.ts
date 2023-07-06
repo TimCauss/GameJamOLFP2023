@@ -11,10 +11,18 @@ export default class Game extends Phaser.Scene {
 
     private background1!: Phaser.GameObjects.TileSprite;
 
+    private platform1!: Phaser.Physics.Arcade.StaticGroup;
+
     private hero!: Hero;
+
+    private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
 
     constructor() {
         super(SceneKeys.Game)
+    }
+
+    preload() {
+        this.cursors = this.input.keyboard!.createCursorKeys();
     }
 
     create() {
@@ -23,8 +31,6 @@ export default class Game extends Phaser.Scene {
         const width = this.scale.width;
         const height = this.scale.height;
 
-
-
         //On ajoute le backgrounden Tilesprite pour le repeat.
         this.background1 = this.add.tileSprite(0, 0, width, height, TextureKeys.Background1)
             .setOrigin(0, 0).setScrollFactor(0, 0);
@@ -32,16 +38,22 @@ export default class Game extends Phaser.Scene {
         this.hero = this.add.hero(width * 0.1, height - 500, HeroAnimKeys.HeroRun, undefined);
         this.hero.scale = 0.5
 
-        //On ajoute la camera qui suit le héro, on décal son offset de 500px à gauche pour placer le héro à gauche du screen:
+        //On ajoute la camera qui suit le héro, on décal son offset de 500px pour placer le héro à gauche de la scene:
         this.cameras.main.startFollow(this.hero, undefined, undefined, undefined, -500)
         this.cameras.main.setBounds(0, 0, Number.MAX_SAFE_INTEGER, height)
+
+
+        this.scene.run(SceneKeys.Interface)
+
     }
 
-    update() {
+    update(time: number, delta:number ) {
 
         //mise à jour de la position du background:
         this.background1.setTilePosition(this.cameras.main.scrollX);
-        
+
+        this.hero.update(time, delta, this.cursors)
+
     }
 
 }

@@ -1,8 +1,9 @@
 enum SceneKeys {
- Prelaoder = "preloader",
- Game = "game",
- StartMenu = "start-menu",
- GameOver = "game-over"
+ Prelaoder = "scene-preloader",
+ Game = "scene-game",
+ StartMenu = "scene-start-menu",
+ Interface = "scene-interface",
+ GameOver = "scene-game-over"
 }
 
 export default SceneKeys

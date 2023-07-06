@@ -3,6 +3,7 @@ import Phaser from 'phaser'
 //import des scenes:
 import Game from './scenes/Game'
 import Preloader from './scenes/Preloader'
+import Interface from './scenes/Interface';
 
 const config: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
@@ -16,7 +17,7 @@ const config: Phaser.Types.Core.GameConfig = {
 			debug: true,
 		},
 	},
-	scene: [Preloader, Game],
+	scene: [Preloader, Game, Interface],
 	scale: {
 		autoCenter: Phaser.Scale.CENTER_BOTH,
 		width: 1280,
