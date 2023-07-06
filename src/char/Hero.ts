@@ -3,6 +3,7 @@ import Phaser, { Scene, Structs } from "phaser";
 import HeroAnimKeys from "../consts/HeroAnimKeys";
 import eventsCenter from "../utils/EventsCenter";
 import HeroControlsSettings from "../consts/HeroControlsSettings";
+import eventsCenter from "../utils/EventsCenter";
 
 
 declare global {
@@ -27,7 +28,9 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
     private jumpCount!: number;
     private distance!: number;
 
-    private HP!: number
+
+
+    private _health = 100;
 
     constructor(scene: Phaser.Scene, x: number,
         y: number, texture: string, frame?: string | number) {
@@ -67,7 +70,9 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
     }
 
 
-    update(time:number, delta:number, cursors: Phaser.Types.Input.Keyboard.CursorKeys) {
+    update(time: number, delta: number, cursors: Phaser.Types.Input.Keyboard.CursorKeys) {
+
+        eventsCenter.emit('hero-health', this._health, this); //TODO
 
         if (!cursors) {
             return;
@@ -99,6 +104,10 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
         this.jumpCount++
         this.anims.play(HeroAnimKeys.HeroJump, true)
         this.heroBody.setVelocityY(HeroControlsSettings.Jump)
+        this.scene.sound.add('sound2')
+        this.scene.sound.play('sound2')
+
+
     }
 
 
@@ -114,6 +123,13 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
         }
 
         return true;
+    }
+
+    public damage(value: number) {
+        this._health -= value;
+        if (this._health <= 0) {
+            this.scene.scene.start('game-over')
+        }
     }
 
 }
