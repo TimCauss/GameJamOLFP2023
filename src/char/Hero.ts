@@ -27,6 +27,8 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
     private jumpCount!: number;
     private distance!: number;
 
+    private HP!: number
+
     constructor(scene: Phaser.Scene, x: number,
         y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame);
@@ -79,10 +81,9 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
 
         //On check si le héro avance
         if (this.heroBody.velocity.x > 0) { //si le héro avance:
-            this.distance += 0.02
+            this.distance += 0.03
             eventsCenter.emit('meter-count', this.distance)           //On lance la méthode 
         }
-
 
         //TOUCHE UP POUR JUMP :----------------------------------------------------
         if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.actionCooldown('jump')) {

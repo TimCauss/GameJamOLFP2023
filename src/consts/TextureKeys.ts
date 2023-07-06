@@ -1,7 +1,13 @@
-enum TextureKeys {
+ enum TextureKeys {
 
     //Backgrounds :
     Background1 = "background-1",
+
+    //Sol :
+    Sol1 = "sol-1",
+
+    //Coin :
+    Coin1 = "coin-1",
 
     //ennemis :
     Enemy1 = "enemy-1",

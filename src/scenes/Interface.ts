@@ -39,7 +39,7 @@ export default class Interface extends Phaser.Scene {
 
         //Compteur de mètre UI:
         this.add.rectangle(this.width - 75, 20, 150, 50, 0x000000, 150)
-        this.add.text(this.width - 130, 15, 'vie:');
+        this.add.text(this.width - 130, 15, 'vies:');
         this.vieRestante = this.add.text(this.width - 70, 15, '3');
     }
 
