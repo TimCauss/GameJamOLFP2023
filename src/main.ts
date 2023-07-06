@@ -1,11 +1,12 @@
 import Phaser from 'phaser'
 
 //import des scenes:
+import StartMenu from './scenes/StartMenu';
 import Game from './scenes/Game'
 import Preloader from './scenes/Preloader'
 import Interface from './scenes/Interface';
 import GameOver from './scenes/GameOver';
-import StartMenu from './scenes/StartMenu';
+
 
 const config: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,

@@ -5,12 +5,10 @@ import createHeroAnims from "../anims/HeroAnims";
 
 export default class Preload extends Phaser.Scene {
     constructor() {
-        super(SceneKeys.Prelaoder)
+        super(SceneKeys.Preloader)
     }
 
     preload() {
-        //Preload Start Menu
-        this.load.image(TextureKeys.Background0, "public/assets/level/background/play.png")
 
         //preload des images des backgrounds:
         this.load.image(TextureKeys.Background1, "public/assets/level/background/ciel.png")

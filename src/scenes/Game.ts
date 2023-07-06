@@ -77,8 +77,6 @@ export default class Game extends Phaser.Scene {
         this.ennemy1.scale = 0.8;
         this.ennemy2 = this.add.sprite(Phaser.Math.Between(1000, 1500), height - 450, TextureKeys.Enemy1)
         this.ennemy2.scale = 0.8;
-        this.ennemy3 = this.add.sprite(Phaser.Math.Between(1000, 1500), height - 300, TextureKeys.Enemy1)
-        this.ennemy3.scale = 0.8;
         this.physics.add.existing(this.ennemy1, true)
         this.physics.add.existing(this.ennemy2, true)
 
@@ -148,11 +146,11 @@ export default class Game extends Phaser.Scene {
             const ennemy1Body = this.ennemy2.body as Phaser.Physics.Arcade.Body;
             ennemy1Body.updateFromGameObject();
         }
-        if (this.ennemy3.x + this.ennemy1.width < scrollX) {
-            this.ennemy3.x = Phaser.Math.Between(rightEdge + 100, rightEdge + 1500);
-            const ennemy1Body = this.ennemy2.body as Phaser.Physics.Arcade.Body;
-            ennemy1Body.updateFromGameObject()
-        }
+        //if (this.ennemy3.x + this.ennemy1.width < scrollX) {
+        //    this.ennemy3.x = Phaser.Math.Between(rightEdge + 100, rightEdge + 1500);
+        //    const ennemy1Body = this.ennemy2.body as Phaser.Physics.Arcade.Body;
+        //   ennemy1Body.updateFromGameObject()
+        //}
     }
 
     private wrapClouds() {

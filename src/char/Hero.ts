@@ -88,7 +88,7 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
 
         //On check si le héro avance
         if (this.heroBody.velocity.x > 0) { //si le héro avance:
-            this.distance += 0.03
+            this.distance += 0.05
             eventsCenter.emit('meter-count', this.distance)           //On lance la méthode 
         }
 

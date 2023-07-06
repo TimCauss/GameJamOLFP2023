@@ -1,5 +1,5 @@
 enum SceneKeys {
- Prelaoder = "scene-preloader",
+ Preloader = "scene-preloader",
  Game = "scene-game",
  StartMenu = "scene-start-menu",
  Interface = "scene-interface",
