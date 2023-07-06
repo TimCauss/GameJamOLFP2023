@@ -41,6 +41,7 @@ export default class Game extends Phaser.Scene {
         //On ajoute le backgrounden Tilesprite pour le repeat.
         this.background1 = this.add.tileSprite(0, 0, width, height, TextureKeys.Background1)
             .setOrigin(0, 0).setScrollFactor(0, 0);
+        this.background1.scale = 4;
 
         this.ground1 = this.add.tileSprite(0,height, width*2, 200, TextureKeys.Sol1).setScrollFactor(0,0)
 
