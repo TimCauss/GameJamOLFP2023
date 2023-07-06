@@ -20,6 +20,7 @@ export default class GameOver extends Phaser.Scene {
         })
 
         this.sound.stopAll('sound1');
+        this.sound.play('sound3');
     }
 
 };
