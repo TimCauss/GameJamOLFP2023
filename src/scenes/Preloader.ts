@@ -9,14 +9,16 @@ export default class Preload extends Phaser.Scene {
     }
 
     preload() {
+        //Preload Start Menu
+        this.load.image(TextureKeys.Background0, "public/assets/level/background/play.png")
 
         //preload des images des backgrounds:
         this.load.image(TextureKeys.Background1, "public/assets/level/background/ciel.png")
 
         //preload des images des backgrounds Game Over:
-        this.load.image(TextureKeys.Background1, "public/assets/level/background/ciel.png")
+        this.load.image(TextureKeys.BackgroundGO, "public/assets/level/background/backgroundGO.png")
 
-        
+
         //muraille 
         this.load.image(TextureKeys.Sol1, "public/assets/level/background/muraille.png")
         this.load.image(TextureKeys.Sol2, "public/assets/level/background/herbe.png")
@@ -26,10 +28,10 @@ export default class Preload extends Phaser.Scene {
         this.load.image(TextureKeys.Cloud2, "public/assets/level/Elements/nuage2.png");
         this.load.image(TextureKeys.Cloud3, "public/assets/level/Elements/nuage3.png");
         this.load.image(TextureKeys.Cloud4, "public/assets/level/Elements/nuageN1.png");
-       
+
         //temple
-        this.load.image(TextureKeys.Temple, "public/assets/level/Elements/temple.png" )
-        
+        this.load.image(TextureKeys.Temple, "public/assets/level/Elements/temple.png")
+
         //montagne
         this.load.image(TextureKeys.Montagne, "public/assets/level/Elements/montagne.png")
 
@@ -43,16 +45,16 @@ export default class Preload extends Phaser.Scene {
         this.load.atlas(TextureKeys.TextureHero, "public/assets/char/hero/hero-sprite.png", "public/assets/char/hero/hero-sprite.json")
 
         //Prelaod des musiques
-        this.load.audio('sound1','public/assets/sfx/musique-de-fond.ogg');
-        this.load.audio('sound2', 'public/assets/sfx/jump.ogg');   
-        
+        this.load.audio('sound1', 'public/assets/sfx/musique-de-fond.ogg');
+        this.load.audio('sound2', 'public/assets/sfx/jump.ogg');
+
     }
 
     create() {
         createHeroAnims(this.anims);
         this.scene.start(SceneKeys.Game);
-        
-        
+
+
 
 
     }

@@ -4,6 +4,8 @@ import Phaser from 'phaser'
 import Game from './scenes/Game'
 import Preloader from './scenes/Preloader'
 import Interface from './scenes/Interface';
+import GameOver from './scenes/GameOver';
+import StartMenu from './scenes/StartMenu';
 
 const config: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
@@ -14,10 +16,10 @@ const config: Phaser.Types.Core.GameConfig = {
 		default: "arcade",
 		arcade: {
 			gravity: { y: 2000 },
-			debug: true,
+			debug: false,
 		},
 	},
-	scene: [Preloader, Game, Interface],
+	scene: [StartMenu, Preloader, Game, Interface, GameOver],
 	scale: {
 		autoCenter: Phaser.Scale.CENTER_BOTH,
 		width: 1280,

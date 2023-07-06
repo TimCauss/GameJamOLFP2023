@@ -26,6 +26,7 @@ export default class Game extends Phaser.Scene {
 
     private ennemy1!: Phaser.GameObjects.Image;
     private ennemy2!: Phaser.GameObjects.Image;
+    private ennemy3!: Phaser.GameObjects.Image;
 
     private hero!: Hero;
 
@@ -59,11 +60,13 @@ export default class Game extends Phaser.Scene {
         this.ground1 = this.add.tileSprite(0, height, width * 2, 200, TextureKeys.Sol1).setScrollFactor(0, 0)
 
         //Groupe nuages:
-        this.cloud1 = this.add.sprite(Phaser.Math.Between(100, 1500), Phaser.Math.Between(50, 500), TextureKeys.Cloud1);
+        this.cloud1 = this.add.sprite(Phaser.Math.Between(100, 1500), Phaser.Math.Between(20, 300), TextureKeys.Cloud1).setScrollFactor(0.2, 0.2);
+        this.cloud2 = this.add.sprite(Phaser.Math.Between(100, 1500), Phaser.Math.Between(50, 300), TextureKeys.Cloud2).setScrollFactor(0.2, 0.2);
+        this.cloud3 = this.add.sprite(Phaser.Math.Between(100, 1500), Phaser.Math.Between(50, 300), TextureKeys.Cloud3).setScrollFactor(0.2, 0.2);
 
 
         //this.cloud2 = this.add.sprite(Phaser.Math.Between(0, 1500), Phaser.Math.Between(100, 220), TextureKeys.Cloud2)
-        this.temple = this.add.sprite(Phaser.Math.Between(1100, 1150), Phaser.Math.Between(550, 550), TextureKeys.Temple)
+        this.temple = this.add.sprite(Phaser.Math.Between(1100, 1150), Phaser.Math.Between(550, 550), TextureKeys.Temple).setScrollFactor(0.3, 0.3);
 
 
 
@@ -74,6 +77,8 @@ export default class Game extends Phaser.Scene {
         this.ennemy1.scale = 0.8;
         this.ennemy2 = this.add.sprite(Phaser.Math.Between(1000, 1500), height - 450, TextureKeys.Enemy1)
         this.ennemy2.scale = 0.8;
+        this.ennemy3 = this.add.sprite(Phaser.Math.Between(1000, 1500), height - 300, TextureKeys.Enemy1)
+        this.ennemy3.scale = 0.8;
         this.physics.add.existing(this.ennemy1, true)
         this.physics.add.existing(this.ennemy2, true)
 
@@ -84,6 +89,7 @@ export default class Game extends Phaser.Scene {
         //On ajoute les collisions entre le héro et les obstacles:
         //this.physics.add.collider(this.hero, this.ennemy1, () => { eventsCenter.emit('', 1) }, undefined,this)
         this.physics.add.overlap(this.hero, this.ennemy1, this.handleHeroEnnemyCollision as Phaser.Types.Physics.Arcade.ArcadePhysicsCallback, undefined, this)
+        this.physics.add.overlap(this.hero, this.ennemy2, this.handleHeroEnnemyCollision as Phaser.Types.Physics.Arcade.ArcadePhysicsCallback, undefined, this)
 
         //On ajoute la camera qui suit le héro, on décal son offset de 500px pour placer le héro à gauche de la scene:
         this.cameras.main.startFollow(this.hero, undefined, undefined, undefined, -500)
@@ -97,12 +103,14 @@ export default class Game extends Phaser.Scene {
 
         //mise à jour de la position du background:
         this.background1.setTilePosition(this.cameras.main.scrollX);
-        this.ground2.setTilePosition(this.cameras.main.scrollX * 0.8)
+        this.ground2.setTilePosition(this.cameras.main.scrollX * 0.3)
         this.ground1.setTilePosition(this.cameras.main.scrollX * 2.5);
 
         this.hero.update(time, delta, this.cursors)
 
         this.wrapEnnemy();
+        this.wrapClouds();
+        this.wrapTemple();
 
 
     }
@@ -131,7 +139,7 @@ export default class Game extends Phaser.Scene {
         const rightEdge = scrollX + this.scale.width;
 
         if (this.ennemy1.x + this.ennemy1.width < scrollX) {
-            this.ennemy1.x = Phaser.Math.Between(rightEdge + 100, rightEdge + 1000);
+            this.ennemy1.x = Phaser.Math.Between(rightEdge + 100, rightEdge + 500);
             const ennemy1Body = this.ennemy1.body as Phaser.Physics.Arcade.Body;
             ennemy1Body.updateFromGameObject();
         }
@@ -140,5 +148,39 @@ export default class Game extends Phaser.Scene {
             const ennemy1Body = this.ennemy2.body as Phaser.Physics.Arcade.Body;
             ennemy1Body.updateFromGameObject();
         }
+        if (this.ennemy3.x + this.ennemy1.width < scrollX) {
+            this.ennemy3.x = Phaser.Math.Between(rightEdge + 100, rightEdge + 1500);
+            const ennemy1Body = this.ennemy2.body as Phaser.Physics.Arcade.Body;
+            ennemy1Body.updateFromGameObject()
+        }
+    }
+
+    private wrapClouds() {
+        const scrollX = this.cameras.main.scrollX;
+        const rightEdge = scrollX + this.scale.width;
+
+        if (this.cloud1.x + this.cloud1.width < 0) {
+            this.cloud1.x = Phaser.Math.Between(rightEdge + 100, rightEdge + 1000);
+           
+        }
+        if (this.cloud2.x + this.cloud1.width < 0) {
+            this.cloud2.x = Phaser.Math.Between(rightEdge + 600, rightEdge + 1000);
+            
+        }
+        if (this.cloud3.x + this.cloud1.width < 0) {
+            this.cloud3.x = Phaser.Math.Between(rightEdge + 1100, rightEdge + 1000);
+           
+        }  
+
+    }
+    private wrapTemple() {
+        const scrollX = this.cameras.main.scrollX;
+        const rightEdge = scrollX + this.scale.width;
+
+        if (this.temple.x + this.temple.width < 0) {
+            this.temple.x = Phaser.Math.Between(rightEdge + 100, rightEdge + 1000)
+        }
+    
+
     }
 }

@@ -1,9 +1,10 @@
 import Phaser, { Scene, Structs } from "phaser";
 
 import HeroAnimKeys from "../consts/HeroAnimKeys";
-import eventsCenter from "../utils/EventsCenter";
 import HeroControlsSettings from "../consts/HeroControlsSettings";
 import eventsCenter from "../utils/EventsCenter";
+import GameOver from "../scenes/GameOver";
+import SceneKeys from "../consts/SceneKeys";
 
 
 declare global {
@@ -27,6 +28,7 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
     private heroBody!: Phaser.Physics.Arcade.Body;
     private jumpCount!: number;
     private distance!: number;
+    
 
 
 
@@ -91,10 +93,9 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
         }
 
         //TOUCHE UP POUR JUMP :----------------------------------------------------
-        if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.actionCooldown('jump')) {
+        if (Phaser.Input.Keyboard.JustDown(cursors.space) && this.actionCooldown('jump')) {
             this.jump()
         }
-
 
     }
 
@@ -128,7 +129,7 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
     public damage(value: number) {
         this._health -= value;
         if (this._health <= 0) {
-            this.scene.scene.start('game-over')
+            this.scene.scene.start(SceneKeys.GameOver)
         }
     }
 

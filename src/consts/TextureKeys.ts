@@ -2,6 +2,8 @@ enum TextureKeys {
 
     //Backgrounds :
     Background1 = "background-1",
+    Background0 = "background-0",
+    BackgroundGO = "backgroun-GO",
 
     //Sol :
     Sol1 = "sol-1",
