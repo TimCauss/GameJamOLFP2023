@@ -14,10 +14,15 @@ import main from '../main';
 export default class Game extends Phaser.Scene {
 
     private background1!: Phaser.GameObjects.TileSprite;
+
     private ground1!: Phaser.GameObjects.TileSprite;
     private ground2!: Phaser.GameObjects.TileSprite;
 
     private cloud1!: Phaser.GameObjects.Image;
+    private cloud2!: Phaser.GameObjects.Image;
+    private cloud3!: Phaser.GameObjects.Image;
+    private montagne!: Phaser.GameObjects.TileSprite;
+    private temple!: Phaser.GameObjects.Image;
 
     private ennemy1!: Phaser.GameObjects.Image;
     private ennemy2!: Phaser.GameObjects.Image;
@@ -48,12 +53,20 @@ export default class Game extends Phaser.Scene {
         this.background1 = this.add.tileSprite(0, 0, width, height, TextureKeys.Background1)
             .setOrigin(0, 0).setScrollFactor(0, 0);
         this.background1.scale = 4;
-
+        this.montagne = this.add.tileSprite(400, 515, 394, 73, TextureKeys.Montagne).setScrollFactor(0,0)
+        this.montagne.scale = 2;
         this.ground2 = this.add.tileSprite(0, height - 110, width * 2, 102, TextureKeys.Sol2).setScrollFactor(0, 0)
         this.ground1 = this.add.tileSprite(0, height, width * 2, 200, TextureKeys.Sol1).setScrollFactor(0, 0)
 
-        //nuages:
-        this.cloud1 = this.add.sprite(Phaser.Math.Between(0, 1500), Phaser.Math.Between(200, 500), TextureKeys.Cloud1)
+        //Groupe nuages:
+        this.cloud1 = this.add.sprite(Phaser.Math.Between(100, 1500), Phaser.Math.Between(50, 500), TextureKeys.Cloud1);
+
+
+        //this.cloud2 = this.add.sprite(Phaser.Math.Between(0, 1500), Phaser.Math.Between(100, 220), TextureKeys.Cloud2)
+        this.temple = this.add.sprite(Phaser.Math.Between(1100, 1150), Phaser.Math.Between(550, 550), TextureKeys.Temple)
+
+
+
 
 
         //On ajoute un obstacle :
@@ -92,7 +105,6 @@ export default class Game extends Phaser.Scene {
         this.wrapEnnemy();
 
 
-
     }
 
 
@@ -129,5 +141,4 @@ export default class Game extends Phaser.Scene {
             ennemy1Body.updateFromGameObject();
         }
     }
-
 }

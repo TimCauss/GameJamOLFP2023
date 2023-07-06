@@ -22,6 +22,11 @@ enum TextureKeys {
     Cloud6 = "cloud-6",
     Cloud7 = "cloud-7",
 
+    //temple:
+    Temple = "temple",
+
+    //Montagne:
+    Montagne = "montagne",
 
     //Char :
     TextureHero = "texture-hero",
