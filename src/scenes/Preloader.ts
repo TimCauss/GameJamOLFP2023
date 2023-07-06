@@ -16,6 +16,9 @@ export default class Preload extends Phaser.Scene {
         //preload des images des elements de décours:
         this.load.image(TextureKeys.Cloud1, 'public/assets/level/Elements/cloud1.png')
 
+        //preload futu ennemi :
+        this.load.image(TextureKeys.Enemy1, 'public/assets/level/Elements/tile_0000.png')
+
         //Preload des sprites et du spriteSheet:
         this.load.atlas(TextureKeys.TextureHero, "public/assets/char/hero/hero-sprite.png", "public/assets/char/hero/hero-sprite.json")
     }

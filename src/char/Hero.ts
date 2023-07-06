@@ -119,9 +119,6 @@ export default class Hero extends Phaser.Physics.Arcade.Sprite {
 
 
 
-
-
-
 //GameObjcet Factory de Phaser
 Phaser.GameObjects.GameObjectFactory.register("hero", function (
     this: Phaser.GameObjects.GameObjectFactory,

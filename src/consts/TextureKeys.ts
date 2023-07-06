@@ -3,6 +3,9 @@ enum TextureKeys {
     //Backgrounds :
     Background1 = "background-1",
 
+    //ennemis :
+    Enemy1 = "enemy-1",
+
     //clouds :
     Cloud1 = "cloud-1",
     Cloud2 = "cloud-2",
